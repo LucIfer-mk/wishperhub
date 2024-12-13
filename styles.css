@@ -1,21 +1,30 @@
-body {
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    margin: 10px;
+    padding: 10px;
     background-color: #f4f4f9;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    width: 90%;
-    max-width: 600px;
+    width: auto;
+    max-width: 500px;
+    position: relative;
 }
 
-textarea {
+input {
     width: 100%;
     padding: 15px;
     border-radius: 20px;
@@ -24,13 +33,75 @@ textarea {
     font-size: 16px;
     margin-bottom: 15px;
     resize: none;
+    cursor: pointer;
 }
-
-textarea:focus {
+input:focus {
     outline: none;
     background-color: #e0e0e0;
 }
 
+/* Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px); /* Blurs the background */
+    z-index: 10;
+}
+
+.popup {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Hide popup and overlay by default */
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+}
+textarea:focus {
+    outline: none;
+    background-color: #f9f9f9;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #999;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #303030;
+}
+
+/* Notes */
 .note {
     background-color: #d6d6d6;
     border-radius: 20px;
@@ -50,20 +121,4 @@ textarea:focus {
 .note-date {
     font-size: 14px;
     color: #666;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    background-color: #999;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #777;
 }

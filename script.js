@@ -1,55 +1,33 @@
-document.addEventListener("DOMContentLoaded", fetchNotes);
-
-async function fetchNotes() {
-    const response = await fetch("http://127.0.0.1:8000/api/notes/");
-    const notes = await response.json();
-    const notesContainer = document.getElementById("notesContainer");
-    notesContainer.innerHTML = ""; // Clear existing notes
-
-    notes.forEach(note => {
-        const noteDiv = document.createElement("div");
-        noteDiv.className = "note";
-
-        const title = document.createElement("div");
-        title.className = "note-title";
-        title.textContent = note.note;
-
-        const date = document.createElement("div");
-        date.className = "note-date";
-        date.textContent = note.date;
-
-        noteDiv.appendChild(title);
-        noteDiv.appendChild(date);
-        notesContainer.prepend(noteDiv);
-    });
+// Open the popup
+function openPopup() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    popupOverlay.classList.remove('hidden');
 }
 
-async function addNote() {
-    const noteInput = document.getElementById("noteInput");
+// Close the popup
+function closePopup() {
+    const popupOverlay = document.getElementById('popupOverlay');
+    popupOverlay.classList.add('hidden');
+}
 
-    if (noteInput.value.trim() === "") {
-        alert("Please write something before adding a note.");
-        return;
-    }
+// Add note functionality
+function addNote() {
+    const noteInput = document.getElementById('popupInput');
+    const noteContent = noteInput.value.trim();
 
-    const currentDate = new Date();
-    const formattedDate = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+    if (noteContent) {
+        // Example: Adding a new note dynamically (modify to save to backend)
+        const notesContainer = document.getElementById('notesContainer');
+        const newNote = document.createElement('div');
+        newNote.className = 'note';
+        newNote.innerHTML = `
+            <div class="note-title">${noteContent}</div>
+            <div class="note-date">${new Date().toLocaleDateString()}</div>
+        `;
+        notesContainer.appendChild(newNote);
 
-    const response = await fetch("http://127.0.0.1:8000/api/notes/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            note: noteInput.value,
-            date: formattedDate,
-        }),
-    });
-
-    if (response.ok) {
-        fetchNotes(); // Refresh notes
-        noteInput.value = ""; // Clear input
-    } else {
-        alert("Failed to add note.");
+        // Clear the popup input and hide it
+        noteInput.value = '';
+        closePopup();
     }
 }
