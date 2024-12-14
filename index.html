@@ -17,10 +17,14 @@
     <!-- Popup Overlay -->
     <div id="popupOverlay" class="popup-overlay hidden">
         <div class="popup">
-            <textarea id="popupInput" rows="4" placeholder="Write your note here..."></textarea>
+            <!-- Container for Textarea and Word Count -->
+            <div class="textarea-container">
+                <textarea id="popupInput" rows="4" placeholder="What's on your mind......" oninput="updateWordCount()"></textarea>
+                <div class="word-count-overlay" id="wordCount">0/100</div>
+            </div>
             <button onclick="addNote()">Add Note</button>
             <button onclick="closePopup()">Close</button>
-        </div>
+        </div>        
     </div>
     <script src="script.js"></script>
 </body>

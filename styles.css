@@ -14,13 +14,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
 }
 
 .container {
     width: auto;
-    max-width: 500px;
+    max-width: 600px;
     position: relative;
 }
 
@@ -56,12 +55,13 @@ input:focus {
 }
 
 .popup {
+    position: relative;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     padding: 20px;
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -71,18 +71,37 @@ input:focus {
 .hidden {
     display: none;
 }
+.textarea-container {
+    position: relative;
+    width: 100%;
+}
 
 textarea {
     width: 100%;
+    height: 150px;
     padding: 15px;
     border-radius: 20px;
     border: 1px solid #ccc;
     font-size: 16px;
     resize: none;
+    text-align: justify;
+    position: relative;
 }
 textarea:focus {
     outline: none;
     background-color: #f9f9f9;
+}
+.word-count-overlay {
+    position: absolute;
+    bottom: 10px; /* Position at the bottom */
+    right: 15px; /* Adjust for padding */
+    font-size: 14px;
+    color: #666;
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 2px 6px;
+    border-radius: 10px;
+    pointer-events: none; /* Prevent interference with textarea input */
+    z-index: 1;
 }
 
 button {
@@ -108,9 +127,10 @@ button:hover {
     padding: 15px;
     margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: flex-start;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: justify;
 }
 
 .note-title {
@@ -121,4 +141,48 @@ button:hover {
 .note-date {
     font-size: 14px;
     color: #666;
+}
+.wordCount {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    input {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .popup {
+        width: 95%;
+    }
+
+    textarea {
+        height: 80px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .note {
+        padding: 10px;
+    }
+
+    .note-title {
+        font-size: 14px;
+    }
+
+    .note-date {
+        font-size: 12px;
+    }
 }
