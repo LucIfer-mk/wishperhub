@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <!-- Trigger for Popup -->
-        <input type="text" id="noteInput" placeholder="Write what's on your mind..." onclick="openPopup()">
+        <input type="text" class="noteinput" id="noteInput" placeholder="Write what's on your mind..." onclick="openPopup()">
         <!-- Notes Display -->
         <div id="notesContainer">
         </div>
@@ -20,6 +20,7 @@
         <div class="popup">
             <!-- Container for Textarea and Word Count -->
             <div class="textarea-container">
+                <input type="text" class="username" id="userName" placeholder="Your Name..">
                 <textarea id="popupInput" rows="4" placeholder="What's on your mind......" oninput="updateWordCount()"></textarea>
                 <div class="word-count-overlay" id="wordCount">0/100</div>
             </div>

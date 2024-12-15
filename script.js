@@ -13,6 +13,7 @@ function closePopup() {
 // Add note functionality with word limit validation
 function addNote() {
     const noteInput = document.getElementById('popupInput');
+    const userName = document.getElementById('userName').value
     const noteContent = noteInput.value.trim();
 
     // Calculate the word count
@@ -30,7 +31,7 @@ function addNote() {
         newNote.className = 'note';
         newNote.innerHTML = `
             <div class="note-title">${noteContent}</div>
-            <div class="note-date">${new Date().toLocaleDateString()}</div>
+            <div class="note-date">by: ${userName}  ${new Date().toLocaleDateString()}</div>
         `;
         notesContainer.appendChild(newNote);
 
