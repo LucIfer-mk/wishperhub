@@ -34,6 +34,26 @@
     gtag('js', new Date());
 
     gtag('config', 'G-J934GE5B6S');
+        // Define dataLayer and the gtag function.
+        window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    // IMPORTANT - DO NOT COPY/PASTE WITHOUT MODIFYING REGION LIST
+    // Set default consent for specific regions according to your requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+     'regions':['AU-NSW','NZ-AUK']
+    });
+    // Set default consent for all other regions according to your requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+    <!--Banner script here!--> 
 </script>
     <script src="script.js"></script>
 </body>
